@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Inline+One:ital@0;1&family=Amatic+SC:wght@400;700&family=Anton&family=Ballet:opsz@16..72&family=Bitcount+Prop+Single:wght@100..900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Caveat:wght@400..700&family=Dosis:wght@200..800&family=Edu+QLD+Hand:wght@400..700&family=Fascinate&family=Jersey+10&family=League+Script&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lobster&family=Monsieur+La+Doulaise&family=MonteCarlo&family=Nanum+Myeongjo&family=Patrick+Hand&family=Pixelify+Sans:wght@400..700&family=Playpen+Sans:wght@100..800&family=Poiret+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&family=Sail&display=swap" rel="stylesheet">
+
+</head>
+<style>
+    body {
+        margin: 0px;
+        padding: 20px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family:  "Pixelify Sans", sans-serif;
+        height: 100vh;
+    }
+
+    #conteiner {
+        position: relative;
+        width: 460px;
+        height: 347px;
+        background: linear-gradient(to bottom, #FFE3F4, #FFC4E8);
+        border: 3px solid #FFA8DE;
+        border-radius: 26px;
+        box-shadow: 0 5px 10px #FFCAF9;
+    }
+    
+    .baslik {
+        color: #FFA8DE;
+        font-size: 20px;
+        margin: 5px;
+        padding-left: 10px;
+        font-weight: 100;
+    }
+
+    #inner-conteiner {
+        background-color: #FFFCFD;
+        position: absolute;
+        width: 436px;
+        height: 296px;
+        top: 55%;
+        left: 50%;
+        border: 3px solid #FFC4E8;
+        border-radius: 22px;
+        transform: translate(-50%, -50%);
+    }
+
+    #myH1 {
+        color: #FFA8DE;
+        font-size: 24px;
+        text-align: center;
+        padding: 22px;
+        font-weight: 100;
+    }
+
+    #myButton {
+        background-color: #FFDEFD;
+        width: 60%;
+        max-width: 180px;
+        min-width: 120px;
+        font-size: 18px;
+        padding: 8px;
+        /* width: 142px;
+        height: 39px; */
+        border: 3px solid #FFCAF9;
+        border-radius: 14px;
+        color: white;
+        font-size: 20px;
+        font-family: "Pixelify Sans", sans-serif;
+        text-align: center;
+        position: relative;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: background-color 0.3s ease;
+    }
+
+    #myButton:hover {
+        background-color: #FFA8DE;
+        box-shadow: 0 0 10px #FFCAF9;
+        
+    }
+
+    #myH2 {
+        text-align: center;
+        color: #FFA8DE;
+        padding: 12px;
+        font-weight: 100;
+    }
+    
+     @media screen and (max-width: 500px) {
+        #conteiner {
+            width: 95%;
+            height: auto;
+        }
+        #inner-conteiner {
+            width: 100%;
+            height: auto;
+            padding: 12px;
+        }
+        #myH1 {
+            font-size: 18px;
+            padding: 10px;
+        }
+          #myButton {
+        width: 90%;
+        font-size: 16px;
+        }
+
+        #myH2 {
+            font-size: 16px;
+        }
+
+        .baslik {
+            font-size: 14px;
+        }
+     }
+</style>
+<body>
+    <div id="conteiner">
+        <h1 class="baslik">password generator...</h1>
+        <div id="inner-conteiner">
+            <h1 id="myH1">generate a random password <br> &lt;3</h1>
+            <button id="myButton">generate!</button>
+            <h2 id="myH2"></h2>
+            
+        </div>
+    </div>
+    <script>
+        const myButton = document.getElementById("myButton");
+        const myH2 = document.getElementById("myH2");
+
+        const shortLetter = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","r","s","t","u","v","w","x","y","z"];
+        const longLetter = ["A","B","C","D","E","F","G","H","İ","J","K","L","M","N","O","P","R","S","T","U","V","W","X","Y","Z"];
+        const numbers = ["0","1","2","3","4","5","6","7","8","9"];
+        const symbols = ["#","%","&","$","?","!",")","(","_"];
+
+        let ques = prompt("How many characters should your password be?");
+
+        myButton.addEventListener("click", function() {
+            const allChars = shortLetter.concat(longLetter,numbers,symbols);
+            myH2.textContent = "";
+            for(let i = 0; i < Number(ques); i++) {
+                const randomChar = allChars[Math.floor(Math.random() * allChars.length)];
+                myH2.textContent += randomChar;
+            }
+        });
+        
+    </script>
+</body>
+</html>
